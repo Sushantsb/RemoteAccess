@@ -1,0 +1,91 @@
+<html>
+<head>
+<style>
+button
+{
+height:150px;
+width:318px;
+border-radius:250px;
+font-size:18px;
+font-family:arial;
+color:white;
+background:black;
+background-repeat:no-repeat;
+}
+img
+{
+height:150px;
+width:318px;
+border-radius:250px;
+}
+</style>
+<script type="text/javascript">
+var mute=0,vc,host,port;
+function set()
+{
+host=document.getElementById("h").value;
+port=document.getElementById("p").value;
+}
+function ad(k)
+{
+k="http://"+host+":"+port+"/="+k;
+var m=new XMLHttpRequest();
+m.open('get',k,true);
+m.setRequestHeader('Content-Type','application/x-www-form-urlencoded;charset=UTF-8');
+m.send();
+}
+function kill()
+{
+var f=new XMLHttpRequest();
+f.open('get','http://192.168.225.11:2004',true);
+f.setRequestHeader('Content-Type','application/x-www-form-urlencoded;charset=UTF-8');
+f.send();
+}
+function vcol()
+{
+if(mute){mute=0;
+document.getElementById("mbut").src="content://0@media/external/images/media/57380";}
+else{
+mute=1;
+document.getElementById("mbut").src="content://0@media/external/images/media/57377";}
+vc=mute+";";
+ad(vc);
+}
+function volc()
+{sv=document.getElementById("vsld").value;
+sv=sv+";";
+ad("nircmd setsysvolume "+sv);
+}
+</script>
+</head>
+<input type="text" id="h" />
+<input type="text" id="p" />
+<button onclick="set()">set machine ip</button>
+<input type="range" min="0" max="65535" oninput="volc()" id="vsld" style="width:954px;height:130px;"/><br><br>
+<img src="content://0@media/external/images/media/57374" onclick="ad('tem.bat;')">
+<img src="content://0@media/external/images/media/57375" onclick="ad('taskkill /F /IM firefox.exe;')">
+<img src="content://0@media/external/images/media/57381" onclick="ad('taskkill /F /IM vlc.exe;')"><br><br>
+<img src="content://0@media/external/images/media/57373" onclick="ad('voldwn;')">
+<img src="content://0@media/external/images/media/57380" id="mbut" onclick="vcol()">
+<img src="content://0@media/external/images/media/57376" onclick="ad('volup;')"><br><br>
+<img src="content://0@media/external/images/media/57382" onclick="ad('taskkill /F /IM wmplayer.exe;')">
+<img src="content://0@media/external/images/media/57379" onclick="ad('taskmgr;')">
+<img src="content://0@media/external/images/media/57395" onclick="kill()"><br><br>
+<button onclick="ad('enter;')">Enter</button>
+<button onclick="ad('up;')">UP</button>
+<button onclick="ad('space;')">Space</button><br><br>
+<button onclick="ad('left;')">LFT</button>
+<button onclick="ad('down;')">DWN</button>
+<button onclick="ad('right;')">RHT</button><br><br>
+<button onclick="ad('tab;')">TAB</button>
+<button onclick="ad('baskspace;')">BSPC</button>
+<button onclick="ad('f4;')">ALTF4</button><br><br>
+<button onclick="ad('start C:;')">[C:\]</button>
+<button onclick="ad('start D:;')">[D:\]</button>
+<button onclick="ad('start E:;')">[E:\]</button><br><br>
+<button onclick="ad('start B:;')">[B:\]</button>
+<button onclick="ad('taskkill /F /IM cmd.exe;')">k-cmd</button>
+<button onclick="ad('shutdown -a;')">[ ABORT ]</button><br><br>
+<img src="content://0@media/external/file/57378" onclick="ad('shutdown -s;')" style="width:954px;height:170px;border-radius:250px;"><br>
+<a href="content://0@media/external/file/57499" >keyboard</a>
+</html>
